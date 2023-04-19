@@ -33,8 +33,9 @@ class HatespeechDataset(Dataset):
             self.X = self.X[self.Y<2]
             self.hlabel = self.hlabel[self.Y<2]
             self.Y = self.Y[self.Y<2]
-
-            #self.Y[:] = np.where(np.random.rand(*self.Y) < flip_prob, 1-self.Y, self.Y)
+            self.Y = self.Y.reshape((self.Y.shape[0], ))
+            print(self.Y.shape)
+            self.Y[:] = torch.from_numpy(np.where(np.random.rand(*self.Y.shape) < flip_prob, 1-self.Y, self.Y))
 
             
         else:
@@ -46,7 +47,7 @@ class HatespeechDataset(Dataset):
             self.hlabel = self.hlabel[self.Y<2]
             self.Y = self.Y[self.Y<2]
 
-            #self.Y[:] = np.where(np.random.rand(*self.Y) < flip_prob, 1-self.Y, self.Y)
+            self.Y[:] = torch.from_numpy(np.where(np.random.rand(*self.Y.shape) < flip_prob, 1-self.Y, self.Y))
 
     def __getitem__(self, index):
         return self.X[index], self.Y[index], self.hlabel[index]
