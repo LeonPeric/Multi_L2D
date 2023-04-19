@@ -343,7 +343,7 @@ experts = [getattr(expert2, 'predict_random'),
 
 
 def increase_experts(config):
-    config["ckp_dir"] = "./" + config["loss_type"] + "_increase_experts_warmup"
+    config["ckp_dir"] = "./" + config["loss_type"] + "one_expert_leon"
     os.makedirs(config["ckp_dir"], exist_ok=True)
 
     experiment_experts = [1]  # ,10]
@@ -400,7 +400,7 @@ if __name__ == "__main__":
 
     config = parser.parse_args().__dict__
 
-    # print(config)
+    print(config)
     increase_experts(config)
     with open("training_list.pickle", "wb") as f:
         pickle.dump(training_results, f)

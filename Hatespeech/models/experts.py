@@ -114,3 +114,12 @@ class synth_expert:
             prediction_rand = random.randint(0, self.n_classes - 1)
             outs[i] = prediction_rand
         return outs
+    
+    def oracle(self, input, labels, hpred):
+        "Always predict the correct label"
+        batch_size = labels.size()[0]
+        outs = [0] * batch_size
+        for i in range(0, batch_size):
+            outs[i] = labels[i]
+
+        return outs

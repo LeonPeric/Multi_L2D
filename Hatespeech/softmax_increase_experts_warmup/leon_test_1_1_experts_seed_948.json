@@ -1,1 +1,0 @@
-{"batch_size": 128, "alpha": 1.0, "epochs": 150, "patience": 50, "expert_type": "predict_prob", "n_classes": 3, "k": 0, "lr": 0.001, "weight_decay": 0.0005, "warmup_epochs": 5, "loss_type": "softmax", "ckp_dir": "./softmax_increase_experts_warmup", "experiment_name": "leon_test_1"}
