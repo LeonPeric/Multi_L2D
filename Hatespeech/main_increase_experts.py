@@ -31,6 +31,7 @@ from lib.utils import AverageMeter, accuracy
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device,  flush=True)
 
+training_results = []
 
 def set_seed(seed):
     random.seed(seed)
@@ -153,6 +154,7 @@ def evaluate(model,
                 "n_experts": len(expert_fns),
                 **expert_accuracies}
     print(to_print, flush=True)
+    training_results.append(to_print)
     return to_print
 
 
@@ -344,10 +346,10 @@ def increase_experts(config):
     config["ckp_dir"] = "./" + config["loss_type"] + "_increase_experts_warmup"
     os.makedirs(config["ckp_dir"], exist_ok=True)
 
-    experiment_experts = [1, 2, 3, 4, 5, 6, 7, 8, 9]  # ,10]
+    experiment_experts = [1]  # ,10]
 
     # , 948,  625,  436,  791]: #, 1750,  812, 1331, 1617,  650, 1816]:
-    for seed in ['']:
+    for seed in [948]:
         print("run for seed {}".format(seed))
         if seed != '':
             set_seed(seed)
@@ -400,3 +402,5 @@ if __name__ == "__main__":
 
     # print(config)
     increase_experts(config)
+    with open("training_list.pickle", "wb") as f:
+        pickle.dump(training_results, f)

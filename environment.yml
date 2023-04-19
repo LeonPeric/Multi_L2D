@@ -14,10 +14,10 @@ dependencies:
   - pandas
   - seaborn
   - tqdm
-  - fasttext
   - pickle5
-  - wandb
   - pip:
+    - fasttext
+    - wandb
     - scikit-image
     - jupyter
     - jupyterlab

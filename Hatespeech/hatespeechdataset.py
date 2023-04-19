@@ -29,10 +29,21 @@ class HatespeechDataset(Dataset):
             self.X = torch.from_numpy(data['X']).float()
             self.Y = torch.from_numpy(data['Y']).long()
             self.hlabel = data['hpred']
+
+            self.X = self.X[self.Y<2]
+            self.hlabel = self.hlabel[self.Y<2]
+            self.Y = self.Y[self.Y<2]
+
+            
         else:
             self.X = torch.from_numpy(data[split]['X']).float()
             self.Y = torch.from_numpy(data[split]['Y']).long()
             self.hlabel = data[split]['hpred']
+
+            self.X = self.X[self.Y<2]
+            self.hlabel = self.hlabel[self.Y<2]
+            self.Y = self.Y[self.Y<2]
+
 
     def __getitem__(self, index):
         return self.X[index], self.Y[index], self.hlabel[index]
@@ -47,5 +58,4 @@ if __name__ == "__main__":
     for batch in dl:
         X, Y, H = batch
         print(X.shape, Y.shape, H.shape)
-        print(H)
         break
