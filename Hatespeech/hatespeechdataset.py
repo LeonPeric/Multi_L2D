@@ -21,7 +21,7 @@ def load_data(file_name):
 
 
 class HatespeechDataset(Dataset):
-    def __init__(self, data_path='hatespeech_data', split='train', flip_prob=0.0):
+    def __init__(self, data_path='hatespeech_data', split='train', error_rate=0.0):
         super(HatespeechDataset).__init__()
         data = load_data(data_path)
         print(data['test'].keys())
@@ -35,7 +35,7 @@ class HatespeechDataset(Dataset):
             self.Y = self.Y[self.Y<2]
             self.Y = self.Y.reshape((self.Y.shape[0], ))
             print(self.Y.shape)
-            self.Y[:] = torch.from_numpy(np.where(np.random.rand(*self.Y.shape) < flip_prob, 1-self.Y, self.Y))
+            self.Y[:] = torch.from_numpy(np.where(np.random.rand(*self.Y.shape) < error_rate, 1-self.Y, self.Y))
 
             
         else:
@@ -47,7 +47,7 @@ class HatespeechDataset(Dataset):
             self.hlabel = self.hlabel[self.Y<2]
             self.Y = self.Y[self.Y<2]
 
-            self.Y[:] = torch.from_numpy(np.where(np.random.rand(*self.Y.shape) < flip_prob, 1-self.Y, self.Y))
+            self.Y[:] = torch.from_numpy(np.where(np.random.rand(*self.Y.shape) < error_rate, 1-self.Y, self.Y))
 
     def __getitem__(self, index):
         return self.X[index], self.Y[index], self.hlabel[index]

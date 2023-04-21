@@ -39,6 +39,11 @@ Hatespeech/hatespeech_data.pkl
 Hatespeech/data.pkl
 Hatespeech/data_vectorized.pkl
 Hatespeech/increase-experts.job
+Hatespeech/metrics/*.pickle
+Hatespeech/models/*.json
+Hatespeech/models/*.pt
+Hatespeech/models_ova/*.json
+Hatespeech/models_ova/*.pt
 
 # Others
 .vscode

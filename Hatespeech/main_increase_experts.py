@@ -140,7 +140,8 @@ def evaluate(model,
                     #
                     correct_sys += (exp_prediction == labels[i].item())
                 real_total += 1
-    cov = str(total) + str(" out of") + str(real_total)
+    #cov = str(total) + str(" out of") + str(real_total)
+    cov = total / real_total * 100
 
     #  === Individual Expert Accuracies === #
     expert_accuracies = {"expert_{}".format(str(k)): 100 * expert_correct_dic[k] / (expert_total_dic[k] + 0.0002) for k
@@ -304,6 +305,7 @@ def train(model,
         validation_loss = metrics["validation_loss"]
 
         if validation_loss < best_validation_loss:
+            best_metric = metrics
             best_validation_loss = validation_loss
             print("Saving the model with classifier accuracy {}".format(
                 metrics['classifier_accuracy']), flush=True)
@@ -320,6 +322,8 @@ def train(model,
         if patience >= config["patience"]:
             print("Early Exiting Training.", flush=True)
             break
+
+    return best_metric
 
 
 # === Experiment 1 === #
@@ -355,22 +359,49 @@ def increase_experts(config):
             set_seed(seed)
         log = {'selected_experts': [], 'selected_expert_fns': []}
         expert_fns = []
-        for i, n in enumerate(experiment_experts):
-            print("n is {}".format(n))
-            num_experts = n
-            expert_fn = experts[i]
-            expert_fns.append(expert_fn)
+        expert_fn = getattr(expert3, 'predict_prob')
+        expert_fns.append(expert_fn)
+        # for i, n in enumerate(experiment_experts):
+        #     print("n is {}".format(n))
+        #     num_experts = n
+        #     expert_fn = experts[i]
+        #     expert_fns.append(expert_fn)
 
         model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
                         3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
-        trainD = HatespeechDataset()
+        trainD = HatespeechDataset(error_rate=config["error_rate"])
         valD = HatespeechDataset(split='val')
         train(model, trainD, valD, expert_fns, config, seed=seed)
+
+        with open(f"metrics/metrics_{seed}.pickle", "wb") as f:
+            pickle.dump(training_results, f)
+
+        training_results = []
 
         # pth = os.path.join(config['ckp_dir'], config['experiment_name'] + '_log_' + '_seed_' + str(seed))
         # with open(pth + '.json', 'w') as f:
         # 	json.dump(log, f)
 
+def increase_error_rates(config):
+    for seed in config["seeds"]:
+        for error_rate in config["error_rates"]:
+            print(f"run for seed {seed} with error rate {error_rate}")
+            if seed != '':
+                set_seed(seed)
+            
+            # selects one expert
+            expert_fns = []
+            expert_fn = getattr(expert3, 'predict_prob')
+            expert_fns.append(expert_fn)
+
+            model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
+                            3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
+            trainD = HatespeechDataset(error_rate=error_rate)
+            valD = HatespeechDataset(split='val')
+            metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
+
+            with open(f'metrics/metrics_ova_{seed}_{error_rate}.pickle', "wb") as f:
+                pickle.dump(metrics, f)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -399,8 +430,12 @@ if __name__ == "__main__":
                         help="specify the experiment name. Checkpoints will be saved with this name.")
 
     config = parser.parse_args().__dict__
+    config["seeds"] = [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]
+    config["error_rates"] = [0.0, 0.02, 0.04, 0.06, 0.08, 0.1]
+    config["patience"] = 50
+    config["loss_type"] = "ova"
+    config["ckp_dir"] = "models_ova"
 
     print(config)
-    increase_experts(config)
-    with open("training_list.pickle", "wb") as f:
-        pickle.dump(training_results, f)
+
+    increase_error_rates(config)
