@@ -21,18 +21,20 @@ def load_data(file_name):
 
 
 class GalaxyZooDataset(Dataset):
-    def __init__(self, data_path='galaxy_data', split='train'):
+    def __init__(self, data_path='galaxy_data', split='train', error_rate=0.0):
         super(GalaxyZooDataset).__init__()
         data = load_data(data_path)
         # print(data.keys())
         if split == 'train':
             self.X = torch.from_numpy(data['X']).float()
             self.Y = torch.from_numpy(data['Y']).long()
+            self.Y[:] = torch.from_numpy(np.where(np.random.rand(*self.Y.shape) < error_rate, 1-self.Y, self.Y))
             self.hlabel = data['hpred']
             # self.hconf = data['hconf']
         else:
             self.X = torch.from_numpy(data[split]['X']).float()
             self.Y = torch.from_numpy(data[split]['Y']).long()
+            self.Y[:] = torch.from_numpy(np.where(np.random.rand(*self.Y.shape) < error_rate, 1-self.Y, self.Y))
             self.hlabel = data[split]['hpred']
 
     def __getitem__(self, index):

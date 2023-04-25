@@ -44,7 +44,8 @@ Hatespeech/models/*.json
 Hatespeech/models/*.pt
 Hatespeech/models_ova/*.json
 Hatespeech/models_ova/*.pt
-
+Hatespeech/models_softmax/*.pt
+Hatespeech/models_softmax/*.json
 # Others
 .vscode
 .ipynb_checkpoints/

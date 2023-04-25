@@ -383,25 +383,28 @@ def increase_experts(config):
         # 	json.dump(log, f)
 
 def increase_error_rates(config):
-    for seed in config["seeds"]:
-        for error_rate in config["error_rates"]:
-            print(f"run for seed {seed} with error rate {error_rate}")
-            if seed != '':
-                set_seed(seed)
-            
-            # selects one expert
-            expert_fns = []
-            expert_fn = getattr(expert3, 'predict_prob')
-            expert_fns.append(expert_fn)
+    for loss in ["softmax", "ova"]:
+        config["loss_type"] = loss
+        config["ckp_dir"] = f"models_{loss}"
+        for seed in config["seeds"]:
+            for error_rate in config["error_rates"]:
+                print(f"run for seed {seed} with error rate {error_rate}")
+                if seed != '':
+                    set_seed(seed)
+                
+                # selects one expert
+                expert_fns = []
+                expert_fn = getattr(expert3, 'predict_prob')
+                expert_fns.append(expert_fn)
 
-            model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
-                            3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
-            trainD = HatespeechDataset(error_rate=error_rate)
-            valD = HatespeechDataset(split='val')
-            metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
+                model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
+                                3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
+                trainD = HatespeechDataset(error_rate=error_rate)
+                valD = HatespeechDataset(split='val', error_rate=error_rate) # need to change this so that error rate is included as well.
+                metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
 
-            with open(f'metrics/metrics_ova_{seed}_{error_rate}.pickle', "wb") as f:
-                pickle.dump(metrics, f)
+                with open(f'metrics/metrics_ova_{loss}_{seed}_{error_rate}.pickle', "wb") as f:
+                    pickle.dump(metrics, f)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -433,7 +436,7 @@ if __name__ == "__main__":
     config["seeds"] = [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]
     config["error_rates"] = [0.0, 0.02, 0.04, 0.06, 0.08, 0.1]
     config["patience"] = 50
-    config["loss_type"] = "ova"
+    #config["loss_type"] = "ova"
     config["ckp_dir"] = "models_ova"
 
     print(config)
