@@ -388,8 +388,8 @@ def increase_error(config):
                 expert_fns = [getattr(expert3, "predict_prob")]
 
                 model = model = ResNet50_defer(int(config["n_classes"]) + 1)
-                trainD = GalaxyZooDataset(error_rate=noise_rate)
-                valD = GalaxyZooDataset(split="val", error_rate=noise_rate)
+                trainD = GalaxyZooDataset(error_rates=noise_rate)
+                valD = GalaxyZooDataset(split="val", error_rates=noise_rate)
                 metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
                 
                 pth = os.path.join(

@@ -363,8 +363,8 @@ def increase_error_rates(config):
 
                 model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
                                 3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
-                trainD = HatespeechDataset(error_rate=error_rate)
-                valD = HatespeechDataset(split='val', error_rate=error_rate)
+                trainD = HatespeechDataset(error_rates=error_rate)
+                valD = HatespeechDataset(split='val', error_rates=error_rate)
                 metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
 
                 with open(f'metrics/metrics_ova_{loss}_{seed}_{error_rate}.pickle', "wb") as f:
