@@ -364,7 +364,7 @@ def increase_error_rates(config):
                 model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
                                 3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
                 trainD = HatespeechDataset(error_rate=error_rate)
-                valD = HatespeechDataset(split='val', error_rate=error_rate) # need to change this so that error rate is included as well.
+                valD = HatespeechDataset(split='val', error_rate=error_rate)
                 metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
 
                 with open(f'metrics/metrics_ova_{loss}_{seed}_{error_rate}.pickle', "wb") as f:
@@ -398,7 +398,8 @@ if __name__ == "__main__":
 
     config = parser.parse_args().__dict__
     config["seeds"] = [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]
-    config["error_rates"] = [0.0, 0.02, 0.04, 0.06, 0.08, 0.1]
+    # we can now specify the error rate for each class individually.
+    config["error_rates"] = [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1]]
     config["patience"] = 50
     #config["loss_type"] = "ova"
     config["ckp_dir"] = "models_ova"
