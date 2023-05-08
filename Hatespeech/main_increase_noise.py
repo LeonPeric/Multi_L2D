@@ -337,7 +337,7 @@ def increase_error_rates(config):
     config["n_classes"] = 2
     for loss in ["softmax", "ova"]:
         config["loss_type"] = loss
-        config["ckp_dir"] = f"models_{loss}/models_{loss}_expert4_predict_prob"
+        config["ckp_dir"] = f"models_{loss}/models_{loss}_expert5_predict_prob"
         for seed in config["seeds"]:
             for error_rate in config["error_rates"]:
                 print(config)
@@ -347,7 +347,7 @@ def increase_error_rates(config):
                 
                 # selects one expert
                 expert_fns = []
-                expert_fn = getattr(expert4, 'predict_prob')
+                expert_fn = getattr(expert5, 'predict_prob')
                 expert_fns.append(expert_fn)
 
                 model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
@@ -356,9 +356,9 @@ def increase_error_rates(config):
                 valD = HatespeechDataset(split='val', error_rates=error_rate)
                 metrics, epoch_metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
 
-                with open(f'metrics_{loss}/metrics_{loss}_{seed}_{error_rate[0]}_expert4_predict_prob.pickle', "wb") as f:
+                with open(f'metrics_{loss}/metrics_{loss}_{seed}_{error_rate[0]}_expert5_predict_prob.pickle', "wb") as f:
                     pickle.dump(metrics, f)
-                with open(f'logs_{loss}/logs_{loss}_{seed}_{error_rate[0]}_expert4_predict_prob.json', "w") as f:
+                with open(f'logs_{loss}/logs_{loss}_{seed}_{error_rate[0]}_expert5_predict_prob.json', "w") as f:
                     json.dump(epoch_metrics, f)
 
 if __name__ == "__main__":
