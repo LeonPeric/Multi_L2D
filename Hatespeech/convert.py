@@ -2,7 +2,7 @@ import pickle5 as pickle
 """
 Reads all the invidual pickle files and combines them into one.
 """
-noise_rates = [0.0, 0.02, 0.04, 0.06, 0.08, 0.1]
+noise_rates = [0.0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.5]
 seeds = [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]
 
 metrics_softmax = []

@@ -295,6 +295,7 @@ def train(model, train_dataset, validation_dataset, expert_fns, config, seed="")
     iters = 0
     warmup_iters = config["warmup_epochs"] * len(train_loader)
     lrate = config["lr"]
+    epoch_metrics = []
 
     for epoch in range(0, config["epochs"]):
         iters, train_loss = train_epoch(
@@ -313,7 +314,8 @@ def train(model, train_dataset, validation_dataset, expert_fns, config, seed="")
             config,
         )
         metrics = evaluate(model, expert_fns, loss_fn, n_classes, valid_loader, config)
-
+        metrics["train_loss"] = train_loss
+        epoch_metrics.append(metrics)
         validation_loss = metrics["validation_loss"]
 
         if validation_loss < best_validation_loss:
@@ -346,14 +348,15 @@ def train(model, train_dataset, validation_dataset, expert_fns, config, seed="")
             print("Early Exiting Training.", flush=True)
             break
 
-    return best_metric
+    return best_metric, epoch_metrics
 
 
 expert1 = synth_expert(flip_prob=0.75, p_in=0.10)
 expert2 = synth_expert(flip_prob=0.50, p_in=0.50)
 expert3 = synth_expert(flip_prob=0.30, p_in=0.75)
 expert4 = synth_expert(flip_prob=0.20, p_in=0.85)
-available_experts = [expert1, expert2, expert3, expert4]
+expert5 = synth_expert(flip_prob=0.1, p_in=0.95)
+available_experts = [expert1, expert2, expert3, expert4, expert5]
 available_expert_fns = ["FlipHuman", "predict_prob", "predict_random"]
 
 experts = [
@@ -378,7 +381,7 @@ def increase_error(config):
 
     for loss in ["softmax", "ova"]:
         config["loss_type"] = loss
-        config["ckp_dir"] = f"models_{loss}"
+        config["ckp_dir"] = f"models_{loss}/models_{loss}_expert4_predict_prob"
         for seed in [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]:
             for noise_rate in [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1]]:
                 print("run for seed {}".format(seed))
@@ -390,15 +393,17 @@ def increase_error(config):
                 model = model = ResNet50_defer(int(config["n_classes"]) + 1)
                 trainD = GalaxyZooDataset(error_rates=noise_rate)
                 valD = GalaxyZooDataset(split="val", error_rates=noise_rate)
-                metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
+                metrics, epoch_metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
                 
                 pth = os.path.join(
                     config["ckp_dir"],
                     config["experiment_name"] + "_log_" + "_seed_" + str(seed),
                 )
 
-                with open(f'metrics/metrics_ova_{loss}_{seed}_{error_rate}.pickle', "wb") as f:
+                with open(f'metrics_{loss}/metrics_{loss}_{seed}_{noise_rate[0]}_expert4_predict_prob.pickle', "wb") as f:
                     pickle.dump(metrics, f)
+                with open(f'logs_{loss}/logs_{loss}_{seed}_{noise_rate[0]}_expert4_predict_prob.json', "w") as f:
+                    json.dump(epoch_metrics, f)
 
 
 if __name__ == "__main__":

@@ -37,6 +37,7 @@ class HatespeechDataset(Dataset):
             for i in [0, 1]:
                 self.Y[:] = torch.from_numpy(np.where((np.random.rand(*self.Y.shape) < error_rates[i]) & (np.array(self.Y)==i), 1-self.Y, self.Y))
 
+            
         else:
             self.X = torch.from_numpy(data[split]['X']).float()
             self.Y = torch.from_numpy(data[split]['Y']).long()

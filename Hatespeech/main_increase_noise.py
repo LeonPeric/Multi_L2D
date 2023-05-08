@@ -280,27 +280,13 @@ def train(model,
     iters = 0
     warmup_iters = config["warmup_epochs"] * len(train_loader)
     lrate = config["lr"]
+    epoch_metrics = []
 
     for epoch in range(0, config["epochs"]):
-        iters, train_loss = train_epoch(iters,
-                                        warmup_iters,
-                                        lrate,
-                                        train_loader,
-                                        model,
-                                        optimizer,
-                                        scheduler,
-                                        epoch,
-                                        expert_fns,
-                                        loss_fn,
-                                        n_classes,
-                                        config["alpha"],
-                                        config)
-        metrics = evaluate(model,
-                           expert_fns,
-                           loss_fn,
-                           n_classes,
-                           valid_loader,
-                           config)
+        iters, train_loss = train_epoch(iters, warmup_iters, lrate, train_loader, model, optimizer, scheduler, epoch, expert_fns, loss_fn, n_classes, config["alpha"], config)
+        metrics = evaluate(model,expert_fns, loss_fn, n_classes, valid_loader, config)
+        metrics["train_loss"] = train_loss
+        epoch_metrics.append(metrics)
 
         validation_loss = metrics["validation_loss"]
 
@@ -323,7 +309,7 @@ def train(model,
             print("Early Exiting Training.", flush=True)
             break
 
-    return best_metric
+    return best_metric, epoch_metrics
 
 
 # === Experiment 1 === #
@@ -331,7 +317,8 @@ expert1 = synth_expert(flip_prob=0.75, p_in=0.10)
 expert2 = synth_expert(flip_prob=0.50, p_in=0.50)
 expert3 = synth_expert(flip_prob=0.30, p_in=0.75)
 expert4 = synth_expert(flip_prob=0.20, p_in=0.85)
-available_experts = [expert1, expert2, expert3, expert4]
+expert5 = synth_expert(flip_prob=0.1, p_in=0.95)
+available_experts = [expert1, expert2, expert3, expert4, expert5]
 available_expert_fns = ['FlipHuman', 'predict_prob', 'predict_random']
 
 experts = [getattr(expert2, 'predict_random'),
@@ -347,28 +334,32 @@ experts = [getattr(expert2, 'predict_random'),
 
 
 def increase_error_rates(config):
+    config["n_classes"] = 2
     for loss in ["softmax", "ova"]:
         config["loss_type"] = loss
-        config["ckp_dir"] = f"models_{loss}"
+        config["ckp_dir"] = f"models_{loss}/models_{loss}_expert4_predict_prob"
         for seed in config["seeds"]:
             for error_rate in config["error_rates"]:
+                print(config)
                 print(f"run for seed {seed} with error rate {error_rate}")
                 if seed != '':
                     set_seed(seed)
                 
                 # selects one expert
                 expert_fns = []
-                expert_fn = getattr(expert3, 'predict_prob')
+                expert_fn = getattr(expert4, 'predict_prob')
                 expert_fns.append(expert_fn)
 
                 model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
                                 3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
                 trainD = HatespeechDataset(error_rates=error_rate)
                 valD = HatespeechDataset(split='val', error_rates=error_rate)
-                metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
+                metrics, epoch_metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
 
-                with open(f'metrics/metrics_ova_{loss}_{seed}_{error_rate}.pickle', "wb") as f:
+                with open(f'metrics_{loss}/metrics_{loss}_{seed}_{error_rate[0]}_expert4_predict_prob.pickle', "wb") as f:
                     pickle.dump(metrics, f)
+                with open(f'logs_{loss}/logs_{loss}_{seed}_{error_rate[0]}_expert4_predict_prob.json', "w") as f:
+                    json.dump(epoch_metrics, f)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -376,7 +367,7 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=128)
     parser.add_argument("--alpha", type=float, default=1.0,
                         help="scaling parameter for the loss function, default=1.0.")
-    parser.add_argument("--epochs", type=int, default=150)
+    parser.add_argument("--epochs", type=int, default=6)
     parser.add_argument("--patience", type=int, default=50,
                         help="number of patience steps for early stopping the training.")
     parser.add_argument("--expert_type", type=str, default="predict_prob",
@@ -393,17 +384,16 @@ if __name__ == "__main__":
                         help="surrogate loss type for learning to defer.")
     parser.add_argument("--ckp_dir", type=str, default="./Models",
                         help="directory name to save the checkpoints.")
-    parser.add_argument("--experiment_name", type=str, default="multiple_experts",
+    parser.add_argument("--experiment_name", type=str, default="increase_error",
                         help="specify the experiment name. Checkpoints will be saved with this name.")
 
     config = parser.parse_args().__dict__
     config["seeds"] = [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]
+    config["seeds"] = [42]
     # we can now specify the error rate for each class individually.
-    config["error_rates"] = [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1]]
+    config["error_rates"] = [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1], [0.5, 0.5]]
+    config["error_rates"] = [[0.0, 0.0]]
     config["patience"] = 50
-    #config["loss_type"] = "ova"
-    config["ckp_dir"] = "models_ova"
 
-    print(config)
 
     increase_error_rates(config)
