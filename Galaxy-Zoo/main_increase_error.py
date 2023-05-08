@@ -388,7 +388,7 @@ def increase_error(config):
                 if seed != "":
                     set_seed(seed)
 
-                expert_fns = [getattr(expert3, "predict_prob")]
+                expert_fns = [getattr(expert4, "predict_prob")]
 
                 model = model = ResNet50_defer(int(config["n_classes"]) + 1)
                 trainD = GalaxyZooDataset(error_rates=noise_rate)
