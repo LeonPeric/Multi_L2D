@@ -382,8 +382,8 @@ def increase_error(config):
     for loss in ["softmax", "ova"]:
         config["loss_type"] = loss
         config["ckp_dir"] = f"models_{loss}/models_{loss}_expert4_predict_prob"
-        for seed in [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]:
-            for noise_rate in [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1], [0.5, 0.5]]:
+        for seed in [42]:
+            for noise_rate in [[0.0, 0.0]]:
                 print("run for seed {}".format(seed))
                 if seed != "":
                     set_seed(seed)
@@ -417,7 +417,7 @@ if __name__ == "__main__":
         default=1.0,
         help="scaling parameter for the loss function, default=1.0.",
     )
-    parser.add_argument("--epochs", type=int, default=150)
+    parser.add_argument("--epochs", type=int, default=6)
     parser.add_argument(
         "--patience",
         type=int,
