@@ -388,7 +388,7 @@ if __name__ == "__main__":
                         help="specify the experiment name. Checkpoints will be saved with this name.")
 
     config = parser.parse_args().__dict__
-    config["seeds"] = [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]
+    config["seeds"] = [35, 936, 235, 464, 912, 445, 202, 19, 986]
     # we can now specify the error rate for each class individually.
     config["error_rates"] = [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1], [0.5, 0.5]]
 
