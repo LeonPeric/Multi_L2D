@@ -367,7 +367,7 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=128)
     parser.add_argument("--alpha", type=float, default=1.0,
                         help="scaling parameter for the loss function, default=1.0.")
-    parser.add_argument("--epochs", type=int, default=6)
+    parser.add_argument("--epochs", type=int, default=150)
     parser.add_argument("--patience", type=int, default=50,
                         help="number of patience steps for early stopping the training.")
     parser.add_argument("--expert_type", type=str, default="predict_prob",
@@ -389,11 +389,9 @@ if __name__ == "__main__":
 
     config = parser.parse_args().__dict__
     config["seeds"] = [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]
-    config["seeds"] = [42]
     # we can now specify the error rate for each class individually.
     config["error_rates"] = [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1], [0.5, 0.5]]
     config["error_rates"] = [[0.0, 0.0]]
-    config["patience"] = 50
 
 
     increase_error_rates(config)
