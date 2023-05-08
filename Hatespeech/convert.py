@@ -1,4 +1,5 @@
 import pickle5 as pickle
+import json
 """
 Reads all the invidual pickle files and combines them into one.
 """
@@ -19,7 +20,7 @@ for noise in noise_rates:
     metrics_ova.append(noise_analytics_ova)
 
 with open(f'metrics/metrics_ova.pkl', "wb") as f:
-                pickle.dump(metrics_ova, f)
+                json.dump(metrics_ova, f)
 
 with open(f'metrics/metrics_softmax.pkl', "wb") as f:
-                pickle.dump(metrics_softmax, f)
+                json.dump(metrics_softmax, f)
