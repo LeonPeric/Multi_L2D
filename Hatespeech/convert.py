@@ -19,8 +19,8 @@ for noise in noise_rates:
     metrics_softmax.append(noise_analytics_softmax)
     metrics_ova.append(noise_analytics_ova)
 
-with open(f'metrics/metrics_ova_expert5.pkl', "w") as f:
+with open(f'metrics/metrics_ova_expert5.json', "w") as f:
                 json.dump(metrics_ova, f)
 
-with open(f'metrics/metrics_softmax_expert5.pkl', "w") as f:
+with open(f'metrics/metrics_softmax_expert5.json', "w") as f:
                 json.dump(metrics_softmax, f)

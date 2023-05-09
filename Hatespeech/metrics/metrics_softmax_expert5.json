@@ -1,0 +1,786 @@
+[
+    [
+        {
+            "coverage": 90.8954326923077,
+            "system_accuracy": 93.05889423076923,
+            "expert_accuracy": 82.50819636422682,
+            "classifier_accuracy": 94.11569936807605,
+            "alone_classifier": 93.26923076923077,
+            "validation_loss": 2.2131521243315477,
+            "n_experts": 1,
+            "expert_0": 82.50819636422682,
+            "train_loss": 2.2194256097078324
+        },
+        {
+            "coverage": 95.10216346153845,
+            "system_accuracy": 93.29927884615384,
+            "expert_accuracy": 84.04897662702254,
+            "classifier_accuracy": 93.77566844310684,
+            "alone_classifier": 93.26923076923077,
+            "validation_loss": 2.2094466594549327,
+            "n_experts": 1,
+            "expert_0": 84.04897662702254,
+            "train_loss": 2.2184806913137436
+        },
+        {
+            "coverage": 84.52524038461539,
+            "system_accuracy": 92.15745192307692,
+            "expert_accuracy": 85.24268534264648,
+            "classifier_accuracy": 93.42338807595492,
+            "alone_classifier": 93.14903846153847,
+            "validation_loss": 2.213087714635409,
+            "n_experts": 1,
+            "expert_0": 85.24268534264648,
+            "train_loss": 2.2223269909620287
+        },
+        {
+            "coverage": 96.33413461538461,
+            "system_accuracy": 93.29927884615384,
+            "expert_accuracy": 82.7867495299188,
+            "classifier_accuracy": 93.69931086402649,
+            "alone_classifier": 93.32932692307692,
+            "validation_loss": 2.2084514636259813,
+            "n_experts": 1,
+            "expert_0": 82.7867495299188,
+            "train_loss": 2.2194990068674088
+        },
+        {
+            "coverage": 92.27764423076923,
+            "system_accuracy": 93.20913461538461,
+            "expert_accuracy": 85.60304622331033,
+            "classifier_accuracy": 93.84564982593129,
+            "alone_classifier": 93.2391826923077,
+            "validation_loss": 2.2118313954426694,
+            "n_experts": 1,
+            "expert_0": 85.60304622331033,
+            "train_loss": 2.2210930436849594
+        },
+        {
+            "coverage": 96.06370192307693,
+            "system_accuracy": 93.14903846153847,
+            "expert_accuracy": 80.15254938542078,
+            "classifier_accuracy": 93.68157354765174,
+            "alone_classifier": 93.359375,
+            "validation_loss": 2.209421597994291,
+            "n_experts": 1,
+            "expert_0": 80.15254938542078,
+            "train_loss": 2.215386462211609
+        },
+        {
+            "coverage": 91.61658653846155,
+            "system_accuracy": 92.99879807692308,
+            "expert_accuracy": 81.00352616234683,
+            "classifier_accuracy": 94.09642197125542,
+            "alone_classifier": 93.29927884615384,
+            "validation_loss": 2.2104805616232066,
+            "n_experts": 1,
+            "expert_0": 81.00352616234683,
+            "train_loss": 2.215584084391594
+        },
+        {
+            "coverage": 92.87860576923077,
+            "system_accuracy": 93.41947115384616,
+            "expert_accuracy": 83.54423329600566,
+            "classifier_accuracy": 94.17663881667295,
+            "alone_classifier": 93.26923076923077,
+            "validation_loss": 2.2116230451143704,
+            "n_experts": 1,
+            "expert_0": 83.54423329600566,
+            "train_loss": 2.2155051797628404
+        },
+        {
+            "coverage": 95.52283653846155,
+            "system_accuracy": 93.29927884615384,
+            "expert_accuracy": 83.22136480353717,
+            "classifier_accuracy": 93.77162334785707,
+            "alone_classifier": 93.2391826923077,
+            "validation_loss": 2.211850166320801,
+            "n_experts": 1,
+            "expert_0": 83.22136480353717,
+            "train_loss": 2.220512166619301
+        },
+        {
+            "coverage": 97.47596153846155,
+            "system_accuracy": 93.14903846153847,
+            "expert_accuracy": 76.19029478501241,
+            "classifier_accuracy": 93.58815987706042,
+            "alone_classifier": 93.2391826923077,
+            "validation_loss": 2.2132295553500834,
+            "n_experts": 1,
+            "expert_0": 76.19029478501241,
+            "train_loss": 2.2172610729932787
+        }
+    ],
+    [
+        {
+            "coverage": 86.9891826923077,
+            "system_accuracy": 91.82692307692308,
+            "expert_accuracy": 84.06462629809408,
+            "classifier_accuracy": 92.98790697796521,
+            "alone_classifier": 92.15745192307692,
+            "validation_loss": 2.2434599216167745,
+            "n_experts": 1,
+            "expert_0": 84.06462629809408,
+            "train_loss": 2.263220861554146
+        },
+        {
+            "coverage": 92.81850961538461,
+            "system_accuracy": 91.40625,
+            "expert_accuracy": 82.00829957464471,
+            "classifier_accuracy": 92.13337351462047,
+            "alone_classifier": 91.5264423076923,
+            "validation_loss": 2.257116592847384,
+            "n_experts": 1,
+            "expert_0": 82.00829957464471,
+            "train_loss": 2.258002299070358
+        },
+        {
+            "coverage": 83.38341346153845,
+            "system_accuracy": 90.7451923076923,
+            "expert_accuracy": 85.17175943155175,
+            "classifier_accuracy": 91.85585254573503,
+            "alone_classifier": 91.34615384615384,
+            "validation_loss": 2.2628023349321804,
+            "n_experts": 1,
+            "expert_0": 85.17175943155175,
+            "train_loss": 2.2694222420454024
+        },
+        {
+            "coverage": 94.2608173076923,
+            "system_accuracy": 91.19591346153847,
+            "expert_accuracy": 81.67530714627523,
+            "classifier_accuracy": 91.7755788404342,
+            "alone_classifier": 91.25600961538461,
+            "validation_loss": 2.2651954889297485,
+            "n_experts": 1,
+            "expert_0": 81.67530714627523,
+            "train_loss": 2.260385474562645
+        },
+        {
+            "coverage": 96.84495192307693,
+            "system_accuracy": 91.10576923076923,
+            "expert_accuracy": 81.90460589598877,
+            "classifier_accuracy": 91.40551996880173,
+            "alone_classifier": 90.98557692307692,
+            "validation_loss": 2.2727938982156606,
+            "n_experts": 1,
+            "expert_0": 81.90460589598877,
+            "train_loss": 2.2670006275177004
+        },
+        {
+            "coverage": 91.64663461538461,
+            "system_accuracy": 90.5048076923077,
+            "expert_accuracy": 82.37404145752413,
+            "classifier_accuracy": 91.24589864767545,
+            "alone_classifier": 90.47475961538461,
+            "validation_loss": 2.282377316401555,
+            "n_experts": 1,
+            "expert_0": 82.37404145752413,
+            "train_loss": 2.260714331269264
+        },
+        {
+            "coverage": 88.1610576923077,
+            "system_accuracy": 91.10576923076923,
+            "expert_accuracy": 82.99488172848643,
+            "classifier_accuracy": 92.19495254959261,
+            "alone_classifier": 91.46634615384616,
+            "validation_loss": 2.259764029429509,
+            "n_experts": 1,
+            "expert_0": 82.99488172848643,
+            "train_loss": 2.265873298048973
+        },
+        {
+            "coverage": 98.91826923076923,
+            "system_accuracy": 91.796875,
+            "expert_accuracy": 77.77734568141288,
+            "classifier_accuracy": 91.95017946688397,
+            "alone_classifier": 91.73677884615384,
+            "validation_loss": 2.2591995551035953,
+            "n_experts": 1,
+            "expert_0": 77.77734568141288,
+            "train_loss": 2.2776937782764435
+        },
+        {
+            "coverage": 93.96033653846155,
+            "system_accuracy": 91.73677884615384,
+            "expert_accuracy": 85.07454221438586,
+            "classifier_accuracy": 92.16501144339585,
+            "alone_classifier": 91.43629807692308,
+            "validation_loss": 2.259473360501803,
+            "n_experts": 1,
+            "expert_0": 85.07454221438586,
+            "train_loss": 2.2705197840929032
+        },
+        {
+            "coverage": 95.8233173076923,
+            "system_accuracy": 91.5264423076923,
+            "expert_accuracy": 77.69772993132383,
+            "classifier_accuracy": 92.12919121576697,
+            "alone_classifier": 91.58653846153847,
+            "validation_loss": 2.2535711160072913,
+            "n_experts": 1,
+            "expert_0": 77.69772993132383,
+            "train_loss": 2.2540813863277434
+        }
+    ],
+    [
+        {
+            "coverage": 90.95552884615384,
+            "system_accuracy": 90.234375,
+            "expert_accuracy": 79.7341662895905,
+            "classifier_accuracy": 91.27849054250113,
+            "alone_classifier": 90.29447115384616,
+            "validation_loss": 2.2894778893544125,
+            "n_experts": 1,
+            "expert_0": 79.7341662895905,
+            "train_loss": 2.3046785295009613
+        },
+        {
+            "coverage": 96.09375,
+            "system_accuracy": 90.234375,
+            "expert_accuracy": 83.84602485226945,
+            "classifier_accuracy": 90.4940559570339,
+            "alone_classifier": 89.90384615384616,
+            "validation_loss": 2.2943435357167172,
+            "n_experts": 1,
+            "expert_0": 83.84602485226945,
+            "train_loss": 2.304720401763916
+        },
+        {
+            "coverage": 39.933894230769226,
+            "system_accuracy": 86.92908653846153,
+            "expert_accuracy": 83.99198759459854,
+            "classifier_accuracy": 91.34687047803834,
+            "alone_classifier": 90.234375,
+            "validation_loss": 2.3007587011043844,
+            "n_experts": 1,
+            "expert_0": 83.99198759459854,
+            "train_loss": 2.32379392683506
+        },
+        {
+            "coverage": 95.37259615384616,
+            "system_accuracy": 89.84375,
+            "expert_accuracy": 84.41547478509767,
+            "classifier_accuracy": 90.10711751395344,
+            "alone_classifier": 89.75360576923077,
+            "validation_loss": 2.3045386351071873,
+            "n_experts": 1,
+            "expert_0": 84.41547478509767,
+            "train_loss": 2.3125490635633468
+        },
+        {
+            "coverage": 92.09735576923077,
+            "system_accuracy": 88.64182692307692,
+            "expert_accuracy": 79.46762017671469,
+            "classifier_accuracy": 89.42903460264161,
+            "alone_classifier": 89.15264423076923,
+            "validation_loss": 2.3254955273408155,
+            "n_experts": 1,
+            "expert_0": 79.46762017671469,
+            "train_loss": 2.3157134771347048
+        },
+        {
+            "coverage": 84.4951923076923,
+            "system_accuracy": 88.34134615384616,
+            "expert_accuracy": 80.6201237906497,
+            "classifier_accuracy": 89.75817603989417,
+            "alone_classifier": 88.58173076923077,
+            "validation_loss": 2.3300594916710486,
+            "n_experts": 1,
+            "expert_0": 80.6201237906497,
+            "train_loss": 2.297118294239044
+        },
+        {
+            "coverage": 84.46514423076923,
+            "system_accuracy": 88.76201923076923,
+            "expert_accuracy": 80.46418550708492,
+            "classifier_accuracy": 90.28815047000532,
+            "alone_classifier": 89.39302884615384,
+            "validation_loss": 2.30605516066918,
+            "n_experts": 1,
+            "expert_0": 80.46418550708492,
+            "train_loss": 2.302900606393814
+        },
+        {
+            "coverage": 95.76322115384616,
+            "system_accuracy": 90.38461538461539,
+            "expert_accuracy": 80.14173029541801,
+            "classifier_accuracy": 90.83777562479524,
+            "alone_classifier": 90.53485576923077,
+            "validation_loss": 2.2843984823960524,
+            "n_experts": 1,
+            "expert_0": 80.14173029541801,
+            "train_loss": 2.3031482994556427
+        },
+        {
+            "coverage": 79.32692307692307,
+            "system_accuracy": 89.1826923076923,
+            "expert_accuracy": 82.1220691505613,
+            "classifier_accuracy": 91.02272382489681,
+            "alone_classifier": 89.66346153846153,
+            "validation_loss": 2.3043449291816125,
+            "n_experts": 1,
+            "expert_0": 82.1220691505613,
+            "train_loss": 2.3109791040420533
+        },
+        {
+            "coverage": 95.91346153846155,
+            "system_accuracy": 90.20432692307692,
+            "expert_accuracy": 79.41164792404717,
+            "classifier_accuracy": 90.66415756064669,
+            "alone_classifier": 90.1141826923077,
+            "validation_loss": 2.2892209474857035,
+            "n_experts": 1,
+            "expert_0": 79.41164792404717,
+            "train_loss": 2.2993980646133423
+        }
+    ],
+    [
+        {
+            "coverage": 90.65504807692307,
+            "system_accuracy": 88.34134615384616,
+            "expert_accuracy": 78.778084387084,
+            "classifier_accuracy": 89.32714321090012,
+            "alone_classifier": 88.5516826923077,
+            "validation_loss": 2.328123633678143,
+            "n_experts": 1,
+            "expert_0": 78.778084387084,
+            "train_loss": 2.3418973833322525
+        },
+        {
+            "coverage": 96.42427884615384,
+            "system_accuracy": 88.1610576923077,
+            "expert_accuracy": 80.67213332414568,
+            "classifier_accuracy": 88.43876321474717,
+            "alone_classifier": 87.86057692307692,
+            "validation_loss": 2.3341398514234104,
+            "n_experts": 1,
+            "expert_0": 80.67213332414568,
+            "train_loss": 2.3448878079652786
+        },
+        {
+            "coverage": 72.29567307692307,
+            "system_accuracy": 87.07932692307692,
+            "expert_accuracy": 82.21256351137451,
+            "classifier_accuracy": 88.94430220514121,
+            "alone_classifier": 88.671875,
+            "validation_loss": 2.3317501636651845,
+            "n_experts": 1,
+            "expert_0": 82.21256351137451,
+            "train_loss": 2.3564801424741746
+        },
+        {
+            "coverage": 93.56971153846155,
+            "system_accuracy": 88.58173076923077,
+            "expert_accuracy": 78.03731024550444,
+            "classifier_accuracy": 89.3063555136045,
+            "alone_classifier": 88.43149038461539,
+            "validation_loss": 2.3289941549301147,
+            "n_experts": 1,
+            "expert_0": 78.03731024550444,
+            "train_loss": 2.3475088238716126
+        },
+        {
+            "coverage": 97.3858173076923,
+            "system_accuracy": 87.25961538461539,
+            "expert_accuracy": 80.45958515037896,
+            "classifier_accuracy": 87.44214478734511,
+            "alone_classifier": 87.07932692307692,
+            "validation_loss": 2.3611276883345385,
+            "n_experts": 1,
+            "expert_0": 80.45958515037896,
+            "train_loss": 2.346681648492813
+        },
+        {
+            "coverage": 92.42788461538461,
+            "system_accuracy": 87.43990384615384,
+            "expert_accuracy": 83.33326719581969,
+            "classifier_accuracy": 87.77633004628315,
+            "alone_classifier": 87.13942307692308,
+            "validation_loss": 2.3594648287846494,
+            "n_experts": 1,
+            "expert_0": 83.33326719581969,
+            "train_loss": 2.3339964032173155
+        },
+        {
+            "coverage": 97.62620192307693,
+            "system_accuracy": 87.6201923076923,
+            "expert_accuracy": 73.41753565180846,
+            "classifier_accuracy": 87.96552514725991,
+            "alone_classifier": 87.71033653846153,
+            "validation_loss": 2.3392688311063328,
+            "n_experts": 1,
+            "expert_0": 73.41753565180846,
+            "train_loss": 2.3484671980142595
+        },
+        {
+            "coverage": 96.57451923076923,
+            "system_accuracy": 88.46153846153847,
+            "expert_accuracy": 79.82442136066427,
+            "classifier_accuracy": 88.76788771724057,
+            "alone_classifier": 88.5516826923077,
+            "validation_loss": 2.3256910947652965,
+            "n_experts": 1,
+            "expert_0": 79.82442136066427,
+            "train_loss": 2.338592121005058
+        },
+        {
+            "coverage": 64.27283653846155,
+            "system_accuracy": 86.65865384615384,
+            "expert_accuracy": 82.75860676894756,
+            "classifier_accuracy": 88.82655031198922,
+            "alone_classifier": 87.46995192307692,
+            "validation_loss": 2.3473295798668494,
+            "n_experts": 1,
+            "expert_0": 82.75860676894756,
+            "train_loss": 2.344574648141861
+        },
+        {
+            "coverage": 95.76322115384616,
+            "system_accuracy": 88.43149038461539,
+            "expert_accuracy": 80.14173029541801,
+            "classifier_accuracy": 88.79824007536115,
+            "alone_classifier": 88.25120192307692,
+            "validation_loss": 2.330296177130479,
+            "n_experts": 1,
+            "expert_0": 80.14173029541801,
+            "train_loss": 2.331217774748802
+        }
+    ],
+    [
+        {
+            "coverage": 92.51802884615384,
+            "system_accuracy": 86.47836538461539,
+            "expert_accuracy": 83.13246334741899,
+            "classifier_accuracy": 86.74894164504899,
+            "alone_classifier": 86.74879807692308,
+            "validation_loss": 2.36585533618927,
+            "n_experts": 1,
+            "expert_0": 83.13246334741899,
+            "train_loss": 2.378771722316742
+        },
+        {
+            "coverage": 99.24879807692307,
+            "system_accuracy": 86.23798076923077,
+            "expert_accuracy": 67.99945600435197,
+            "classifier_accuracy": 86.37601918328734,
+            "alone_classifier": 86.2079326923077,
+            "validation_loss": 2.364077274615948,
+            "n_experts": 1,
+            "expert_0": 67.99945600435197,
+            "train_loss": 2.374003690481186
+        },
+        {
+            "coverage": 93.50961538461539,
+            "system_accuracy": 86.65865384615384,
+            "expert_accuracy": 77.31474322708961,
+            "classifier_accuracy": 87.3071951379436,
+            "alone_classifier": 86.68870192307692,
+            "validation_loss": 2.3580961319116445,
+            "n_experts": 1,
+            "expert_0": 77.31474322708961,
+            "train_loss": 2.3715241253376007
+        },
+        {
+            "coverage": 94.8016826923077,
+            "system_accuracy": 87.65024038461539,
+            "expert_accuracy": 78.61262588135736,
+            "classifier_accuracy": 88.14579752311259,
+            "alone_classifier": 87.40985576923077,
+            "validation_loss": 2.349511586702787,
+            "n_experts": 1,
+            "expert_0": 78.61262588135736,
+            "train_loss": 2.375101017951965
+        },
+        {
+            "coverage": 86.4483173076923,
+            "system_accuracy": 85.2764423076923,
+            "expert_accuracy": 79.15739283485905,
+            "classifier_accuracy": 86.23565915065487,
+            "alone_classifier": 85.2764423076923,
+            "validation_loss": 2.3904954470120945,
+            "n_experts": 1,
+            "expert_0": 79.15739283485905,
+            "train_loss": 2.370363253355026
+        },
+        {
+            "coverage": 93.26923076923077,
+            "system_accuracy": 85.6670673076923,
+            "expert_accuracy": 81.6963556282539,
+            "classifier_accuracy": 85.95360547829878,
+            "alone_classifier": 85.4266826923077,
+            "validation_loss": 2.387058441455548,
+            "n_experts": 1,
+            "expert_0": 81.6963556282539,
+            "train_loss": 2.365796372294426
+        },
+        {
+            "coverage": 79.4170673076923,
+            "system_accuracy": 85.12620192307692,
+            "expert_accuracy": 78.24815233630589,
+            "classifier_accuracy": 86.90881245142593,
+            "alone_classifier": 86.14783653846153,
+            "validation_loss": 2.3695828456145067,
+            "n_experts": 1,
+            "expert_0": 78.24815233630589,
+            "train_loss": 2.372461673617363
+        },
+        {
+            "coverage": 98.046875,
+            "system_accuracy": 86.80889423076923,
+            "expert_accuracy": 75.38438343266635,
+            "classifier_accuracy": 87.03646683921339,
+            "alone_classifier": 86.80889423076923,
+            "validation_loss": 2.359657049179077,
+            "n_experts": 1,
+            "expert_0": 75.38438343266635,
+            "train_loss": 2.3712505608797074
+        },
+        {
+            "coverage": 77.16346153846155,
+            "system_accuracy": 84.55528846153847,
+            "expert_accuracy": 79.21050547091961,
+            "classifier_accuracy": 86.13706829684313,
+            "alone_classifier": 85.12620192307692,
+            "validation_loss": 2.386487373938927,
+            "n_experts": 1,
+            "expert_0": 79.21050547091961,
+            "train_loss": 2.3739251375198362
+        },
+        {
+            "coverage": 81.09975961538461,
+            "system_accuracy": 85.90745192307692,
+            "expert_accuracy": 79.96817807053162,
+            "classifier_accuracy": 87.29158624336472,
+            "alone_classifier": 86.71875,
+            "validation_loss": 2.3619448771843543,
+            "n_experts": 1,
+            "expert_0": 79.96817807053162,
+            "train_loss": 2.3724984496831896
+        }
+    ],
+    [
+        {
+            "coverage": 97.02524038461539,
+            "system_accuracy": 85.06610576923077,
+            "expert_accuracy": 80.8079175597625,
+            "classifier_accuracy": 85.19665267275774,
+            "alone_classifier": 85.06610576923077,
+            "validation_loss": 2.391902364217318,
+            "n_experts": 1,
+            "expert_0": 80.8079175597625,
+            "train_loss": 2.404356133937836
+        },
+        {
+            "coverage": 98.85817307692307,
+            "system_accuracy": 84.6454326923077,
+            "expert_accuracy": 71.05225761969675,
+            "classifier_accuracy": 84.80242903336081,
+            "alone_classifier": 84.55528846153847,
+            "validation_loss": 2.390726318726173,
+            "n_experts": 1,
+            "expert_0": 71.05225761969675,
+            "train_loss": 2.399139603972435
+        },
+        {
+            "coverage": 91.97716346153845,
+            "system_accuracy": 85.00600961538461,
+            "expert_accuracy": 75.28084248626031,
+            "classifier_accuracy": 85.85429317692606,
+            "alone_classifier": 85.21634615384616,
+            "validation_loss": 2.385714971102201,
+            "n_experts": 1,
+            "expert_0": 75.28084248626031,
+            "train_loss": 2.403053951263428
+        },
+        {
+            "coverage": 94.44110576923077,
+            "system_accuracy": 85.48677884615384,
+            "expert_accuracy": 74.5945139518768,
+            "classifier_accuracy": 86.12790053681512,
+            "alone_classifier": 85.30649038461539,
+            "validation_loss": 2.383711347213158,
+            "n_experts": 1,
+            "expert_0": 74.5945139518768,
+            "train_loss": 2.4007484167814255
+        },
+        {
+            "coverage": 74.63942307692307,
+            "system_accuracy": 82.39182692307692,
+            "expert_accuracy": 78.0805502178791,
+            "classifier_accuracy": 83.85667939385348,
+            "alone_classifier": 83.80408653846153,
+            "validation_loss": 2.4137047162422767,
+            "n_experts": 1,
+            "expert_0": 78.0805502178791,
+            "train_loss": 2.3998673051595687
+        },
+        {
+            "coverage": 94.23076923076923,
+            "system_accuracy": 83.65384615384616,
+            "expert_accuracy": 79.68741699227397,
+            "classifier_accuracy": 83.89668099819256,
+            "alone_classifier": 83.50360576923077,
+            "validation_loss": 2.415574000431941,
+            "n_experts": 1,
+            "expert_0": 79.68741699227397,
+            "train_loss": 2.39603728055954
+        },
+        {
+            "coverage": 83.89423076923077,
+            "system_accuracy": 83.7139423076923,
+            "expert_accuracy": 77.42534424427454,
+            "classifier_accuracy": 84.92120039680513,
+            "alone_classifier": 84.55528846153847,
+            "validation_loss": 2.391458749771118,
+            "n_experts": 1,
+            "expert_0": 77.42534424427454,
+            "train_loss": 2.3978864371776583
+        },
+        {
+            "coverage": 95.703125,
+            "system_accuracy": 85.60697115384616,
+            "expert_accuracy": 74.82507017472703,
+            "classifier_accuracy": 86.09104910232185,
+            "alone_classifier": 85.57692307692308,
+            "validation_loss": 2.3759022309229922,
+            "n_experts": 1,
+            "expert_0": 74.82507017472703,
+            "train_loss": 2.397619253396988
+        },
+        {
+            "coverage": 76.0516826923077,
+            "system_accuracy": 82.6923076923077,
+            "expert_accuracy": 77.16434701020151,
+            "classifier_accuracy": 84.43302708680255,
+            "alone_classifier": 83.29326923076923,
+            "validation_loss": 2.4105415894435,
+            "n_experts": 1,
+            "expert_0": 77.16434701020151,
+            "train_loss": 2.3979142367839814
+        },
+        {
+            "coverage": 93.81009615384616,
+            "system_accuracy": 84.73557692307692,
+            "expert_accuracy": 77.66982750502184,
+            "classifier_accuracy": 85.20179099289587,
+            "alone_classifier": 84.82572115384616,
+            "validation_loss": 2.3879025074151845,
+            "n_experts": 1,
+            "expert_0": 77.66982750502184,
+            "train_loss": 2.396639937162399
+        }
+    ],
+    [
+        {
+            "coverage": 98.3173076923077,
+            "system_accuracy": 49.18870192307692,
+            "expert_accuracy": 39.28557398009293,
+            "classifier_accuracy": 49.35818920054434,
+            "alone_classifier": 49.57932692307692,
+            "validation_loss": 2.3539667404614963,
+            "n_experts": 1,
+            "expert_0": 39.28557398009293,
+            "train_loss": 2.3509947836399077
+        },
+        {
+            "coverage": 92.00721153846155,
+            "system_accuracy": 50.78125,
+            "expert_accuracy": 48.87214370515511,
+            "classifier_accuracy": 50.947091739154416,
+            "alone_classifier": 50.42067307692308,
+            "validation_loss": 2.351889995428232,
+            "n_experts": 1,
+            "expert_0": 48.87214370515511,
+            "train_loss": 2.362826865911484
+        },
+        {
+            "coverage": 88.61177884615384,
+            "system_accuracy": 52.37379807692308,
+            "expert_accuracy": 48.28493494198684,
+            "classifier_accuracy": 52.89928610039721,
+            "alone_classifier": 52.85456730769231,
+            "validation_loss": 2.3309472707601695,
+            "n_experts": 1,
+            "expert_0": 48.28493494198684,
+            "train_loss": 2.3531179398298265
+        },
+        {
+            "coverage": 92.24759615384616,
+            "system_accuracy": 50.09014423076923,
+            "expert_accuracy": 41.86043266633126,
+            "classifier_accuracy": 50.781757303525815,
+            "alone_classifier": 50.87139423076923,
+            "validation_loss": 2.35932968213008,
+            "n_experts": 1,
+            "expert_0": 41.86043266633126,
+            "train_loss": 2.345457229018211
+        },
+        {
+            "coverage": 91.70673076923077,
+            "system_accuracy": 51.171875,
+            "expert_accuracy": 41.66663647345183,
+            "classifier_accuracy": 52.031453078916996,
+            "alone_classifier": 51.53245192307692,
+            "validation_loss": 2.3344928117898793,
+            "n_experts": 1,
+            "expert_0": 41.66663647345183,
+            "train_loss": 2.351681184768677
+        },
+        {
+            "coverage": 92.75841346153845,
+            "system_accuracy": 52.79447115384615,
+            "expert_accuracy": 51.037302043732744,
+            "classifier_accuracy": 52.93164713535318,
+            "alone_classifier": 53.18509615384615,
+            "validation_loss": 2.3603407052847056,
+            "n_experts": 1,
+            "expert_0": 51.037302043732744,
+            "train_loss": 2.363702255487442
+        },
+        {
+            "coverage": 88.25120192307693,
+            "system_accuracy": 50.60096153846154,
+            "expert_accuracy": 44.75701035447041,
+            "classifier_accuracy": 51.37895637116253,
+            "alone_classifier": 50.87139423076923,
+            "validation_loss": 2.3214983573326697,
+            "n_experts": 1,
+            "expert_0": 44.75701035447041,
+            "train_loss": 2.3547776877880096
+        },
+        {
+            "coverage": 87.40985576923077,
+            "system_accuracy": 51.71274038461539,
+            "expert_accuracy": 48.210000854414865,
+            "classifier_accuracy": 52.217254994250425,
+            "alone_classifier": 52.19350961538461,
+            "validation_loss": 2.3382820074374857,
+            "n_experts": 1,
+            "expert_0": 48.210000854414865,
+            "train_loss": 2.3582815706729887
+        },
+        {
+            "coverage": 98.4375,
+            "system_accuracy": 53.03485576923077,
+            "expert_accuracy": 46.153668639736004,
+            "classifier_accuracy": 53.144076521853584,
+            "alone_classifier": 53.125,
+            "validation_loss": 2.328561837856586,
+            "n_experts": 1,
+            "expert_0": 46.153668639736004,
+            "train_loss": 2.344082173705101
+        },
+        {
+            "coverage": 86.29807692307693,
+            "system_accuracy": 50.78125,
+            "expert_accuracy": 48.68418917360124,
+            "classifier_accuracy": 51.11420434839121,
+            "alone_classifier": 50.81129807692308,
+            "validation_loss": 2.3430053179080668,
+            "n_experts": 1,
+            "expert_0": 48.68418917360124,
+            "train_loss": 2.348415717482567
+        }
+    ]
+]
