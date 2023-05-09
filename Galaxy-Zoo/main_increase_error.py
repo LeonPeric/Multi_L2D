@@ -379,11 +379,10 @@ def increase_error(config):
     os.makedirs(config["ckp_dir"], exist_ok=True)
     experiment_experts = [1]
 
-    
-    for seed in [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]:
+    for loss in ["softmax", "ova"]:
         config["loss_type"] = loss
         config["ckp_dir"] = f"models_{loss}/models_{loss}_expert4_predict_prob"
-        for loss in ["softmax", "ova"]:
+        for seed in [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]:
             for noise_rate in [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1], [0.5, 0.5]]:
                 print("run for seed {}".format(seed))
                 if seed != "":
