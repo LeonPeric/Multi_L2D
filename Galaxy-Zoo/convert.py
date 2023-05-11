@@ -12,9 +12,9 @@ for noise in noise_rates:
     noise_analytics_softmax = []
     noise_analytics_ova = []
     for seed in seeds:
-        with open(f"metrics_softmax/metrics_softmax_{seed}_{noise}_expert5_predict_prob.pickle", "rb") as f:
+        with open(f"metrics_softmax/metrics_softmax_{seed}_{noise}_expert4_predict_prob.pickle", "rb") as f:
             noise_analytics_softmax.append(pickle.load(f))
-        with open(f"metrics_ova/metrics_ova_{seed}_{noise}_expert5_predict_prob.pickle", "rb") as g:
+        with open(f"metrics_ova/metrics_ova_{seed}_{noise}_expert4_predict_prob.pickle", "rb") as g:
             noise_analytics_ova.append(pickle.load(g))
     metrics_softmax.append(noise_analytics_softmax)
     metrics_ova.append(noise_analytics_ova)
