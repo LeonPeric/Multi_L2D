@@ -330,14 +330,22 @@ experts = [getattr(expert2, 'predict_random'),
            getattr(expert4, 'predict_prob'),
            getattr(expert4, 'HumanExpert'),
            getattr(expert2, 'predict_prob'),
-           getattr(expert1, 'HumanExpert')]
+           getattr(expert1, 'HumanExpert'),
+           getattr(expert5, "FlipHuman"),
+           getattr(expert5, "predict_prob"),
+           getattr(expert5, "predict_random")]
+
+experts = []
+for expert in available_experts:
+    for expert_fn in available_expert_fns:
+        experts.append(getattr(expert, expert_fn))
 
 
 def increase_error_rates(config):
     config["n_classes"] = 2
     for loss in ["softmax", "ova"]:
         config["loss_type"] = loss
-        config["ckp_dir"] = f"models_{loss}/models_{loss}_expert5_predict_prob"
+        config["ckp_dir"] = f"models_{loss}/models_{loss}_random_expert"
         for seed in config["seeds"]:
             for error_rate in config["error_rates"]:
                 print(config)
@@ -347,8 +355,9 @@ def increase_error_rates(config):
                 
                 # selects one expert
                 expert_fns = []
-                expert_fn = getattr(expert5, 'predict_prob')
-                expert_fns.append(expert_fn)
+                # expert_fn = getattr(expert5, 'predict_prob')
+                random_number = np.random.randint(0, len(experts))
+                expert_fns.append(experts[random_number])
 
                 model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
                                 3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
@@ -356,9 +365,9 @@ def increase_error_rates(config):
                 valD = HatespeechDataset(split='val', error_rates=error_rate)
                 metrics, epoch_metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
 
-                with open(f'metrics_{loss}/metrics_{loss}_{seed}_{error_rate[0]}_expert5_predict_prob.pickle', "wb") as f:
+                with open(f'metrics_{loss}/metrics_{loss}_{seed}_{error_rate[0]}_random_expert.pickle', "wb") as f:
                     pickle.dump(metrics, f)
-                with open(f'logs_{loss}/logs_{loss}_{seed}_{error_rate[0]}_expert5_predict_prob.json', "w") as f:
+                with open(f'logs_{loss}/logs_{loss}_{seed}_{error_rate[0]}_random_expert.json', "w") as f:
                     json.dump(epoch_metrics, f)
 
 if __name__ == "__main__":
