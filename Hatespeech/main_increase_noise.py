@@ -398,7 +398,7 @@ if __name__ == "__main__":
     config = parser.parse_args().__dict__
     config["seeds"] = [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]
     # we can now specify the error rate for each class individually.
-    config["error_rates"] = [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1], [0.5, 0.5]]
+    config["error_rates"] = [[0.0, 0.0], [0.02, 0.02], [0.04, 0.04], [0.06, 0.06], [0.08, 0.08], [0.1, 0.1], [0.2, 0.2], [0.3, 0.3], [0.4, 0.4], [0.5, 0.5], [0.6, 0.6], [0.7, 0.7], [0.8, 0.8]]
 
 
     increase_error_rates(config)
