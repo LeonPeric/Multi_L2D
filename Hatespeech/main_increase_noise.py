@@ -335,12 +335,6 @@ experts = [getattr(expert2, 'predict_random'),
            getattr(expert5, "predict_prob"),
            getattr(expert5, "predict_random")]
 
-experts = []
-for expert in available_experts:
-    for expert_fn in available_expert_fns:
-        experts.append(getattr(expert, expert_fn))
-
-
 def increase_error_rates(config):
     config["n_classes"] = 2
     for loss in ["softmax", "ova"]:
@@ -356,7 +350,7 @@ def increase_error_rates(config):
                 # selects one expert
                 expert_fns = []
                 expert_fn = getattr(expert4, 'predict_prob')
-                expert_fns.append(experts[expert_fn])
+                expert_fns.append(expert_fn)
 
                 model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
                                 3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
