@@ -355,9 +355,8 @@ def increase_error_rates(config):
                 
                 # selects one expert
                 expert_fns = []
-                # expert_fn = getattr(expert5, 'predict_prob')
-                random_number = np.random.randint(0, len(experts))
-                expert_fns.append(experts[random_number])
+                expert_fn = getattr(expert4, 'predict_prob')
+                expert_fns.append(experts[expert_fn])
 
                 model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
                                 3, 4, 5], dropout=0.5, output_dim=int(config["n_classes"]), num_experts=len(expert_fns))
