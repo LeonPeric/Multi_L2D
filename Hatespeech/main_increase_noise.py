@@ -345,7 +345,7 @@ def increase_error_rates(config):
     config["n_classes"] = 2
     for loss in ["softmax", "ova"]:
         config["loss_type"] = loss
-        config["ckp_dir"] = f"models_{loss}/models_{loss}_random_expert"
+        config["ckp_dir"] = f"models_{loss}/models_{loss}_expert4_predict_prob"
         for seed in config["seeds"]:
             for error_rate in config["error_rates"]:
                 print(config)
