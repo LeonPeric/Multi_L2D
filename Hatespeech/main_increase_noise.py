@@ -78,7 +78,7 @@ def evaluate(model,
             if config["loss_type"] == "softmax":
                 outputs = F.softmax(outputs, dim=1)
             if config["loss_type"] == "ova":
-                ouputs = F.sigmoid(outputs)
+                outputs = F.sigmoid(outputs)
 
             _, predicted = torch.max(outputs.data, 1)
             batch_size = outputs.size()[0]  # batch_size

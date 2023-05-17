@@ -53,3 +53,6 @@ Hatespeech/models_softmax/*.json
 # Model Results
 # ============= #
 
+SkinCancer/data/*
+Galaxy-Zoo/images_test_rev1/*
+SkinCancer/SkinCancer.pkl
