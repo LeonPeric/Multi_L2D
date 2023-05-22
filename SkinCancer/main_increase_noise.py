@@ -309,17 +309,17 @@ def increase_error(config):
                 path = Path(f'metrics/{loss}/metrics_{loss}_{seed}_{noise_rate}.pickle')
                 if path.is_file():
                     continue
+                else:
+                    print(f"The current run is: {loss} {seed} {noise_rate}")
+                    model = ResNet50_defer(int(config["n_classes"]) + len(expert_fn))
+                    dataset_train = SkinCancerDataset(error_rate=noise_rate)
+                    dataset_validation = SkinCancerDataset(split="val", error_rate=noise_rate)
+                    metrics, epoch_metrics = train(model, dataset_train, dataset_validation, expert_fn, config, seed=seed)
 
-                print(f"The current run is: {loss} {seed} {noise_rate}")
-                model = ResNet50_defer(int(config["n_classes"]) + len(expert_fn))
-                dataset_train = SkinCancerDataset(error_rate=noise_rate)
-                dataset_validation = SkinCancerDataset(split="val", error_rate=noise_rate)
-                metrics, epoch_metrics = train(model, dataset_train, dataset_validation, expert_fn, config, seed=seed)
-
-                with open(f'metrics/{loss}/metrics_{loss}_{seed}_{noise_rate}.pickle', "wb") as f:
-                    pickle.dump(metrics, f)
-                with open(f'logs/{loss}/logs_{loss}_{seed}_{noise_rate}.json', "w") as f:
-                    json.dump(epoch_metrics, f)
+                    with open(f'metrics/{loss}/metrics_{loss}_{seed}_{noise_rate}.pickle', "wb") as f:
+                        pickle.dump(metrics, f)
+                    with open(f'logs/{loss}/logs_{loss}_{seed}_{noise_rate}.json', "w") as f:
+                        json.dump(epoch_metrics, f)
 
 
 if __name__ == "__main__":
