@@ -322,7 +322,7 @@ if __name__ == "__main__":
     config = dict()
     config["batch_size"] = 32
     config["alpha"] = 1.0
-    config["epochs"] = 6
+    config["epochs"] = 150
     config["patience"] = 50
     config["n_classes"] = 2
     config["lr"] = 0.001

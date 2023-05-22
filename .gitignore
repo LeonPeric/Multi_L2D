@@ -56,3 +56,6 @@ Hatespeech/models_softmax/*.json
 SkinCancer/data/*
 Galaxy-Zoo/images_test_rev1/*
 SkinCancer/SkinCancer.pkl
+SkinCancer/logs/*
+SkinCancer/metrics/*
+SkinCancer/models_checkpoints/*
