@@ -18,6 +18,7 @@ from models.experts import synth_expert
 from models.resnet50 import ResNet50_defer
 from lib.losses import Criterion
 from lib.utils import AverageMeter, accuracy
+from pathlib import Path
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device, flush=True)
@@ -299,12 +300,16 @@ expert_fn = [getattr(expert, "predict_prob")]
 
 
 def increase_error(config):
-    for loss in ["softmax", "ova"]:
-        config["loss"] = loss
-        for seed in [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]:
-            config["seed"] = seed
-            for noise_rate in [0.0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.5]:
-                config["noise_rate"] = noise_rate
+    for seed in [42, 35, 936, 235, 464, 912, 445, 202, 19, 986]:
+        config["seed"] = seed
+        for noise_rate in [0.0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.5]:
+            config["noise_rate"] = noise_rate
+            for loss in ["softmax", "ova"]:
+                config["loss"] = loss
+                path = Path(f'metrics/{loss}/metrics_{loss}_{seed}_{noise_rate}.pickle')
+                if path.is_file():
+                    continue
+
                 print(f"The current run is: {loss} {seed} {noise_rate}")
                 model = ResNet50_defer(int(config["n_classes"]) + len(expert_fn))
                 dataset_train = SkinCancerDataset(error_rate=noise_rate)
