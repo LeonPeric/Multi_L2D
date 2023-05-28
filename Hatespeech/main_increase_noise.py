@@ -318,6 +318,7 @@ expert2 = synth_expert(flip_prob=0.50, p_in=0.50)
 expert3 = synth_expert(flip_prob=0.30, p_in=0.75)
 expert4 = synth_expert(flip_prob=0.20, p_in=0.85)
 expert5 = synth_expert(flip_prob=0.1, p_in=0.95)
+expert6 = synth_expert(flip_prob=0.0, p_in=0.70)
 available_experts = [expert1, expert2, expert3, expert4, expert5]
 available_expert_fns = ['FlipHuman', 'predict_prob', 'predict_random']
 
@@ -339,7 +340,7 @@ def increase_error_rates(config):
     config["n_classes"] = 2
     for loss in ["softmax", "ova"]:
         config["loss_type"] = loss
-        config["ckp_dir"] = f"models_{loss}/models_{loss}_expert4_predict_prob"
+        config["ckp_dir"] = f"models_{loss}/models_{loss}_expert_70"
         for seed in config["seeds"]:
             for error_rate in config["error_rates"]:
                 print(config)
@@ -349,7 +350,7 @@ def increase_error_rates(config):
                 
                 # selects one expert
                 expert_fns = []
-                expert_fn = getattr(expert4, 'predict_prob')
+                expert_fn = getattr(expert6, 'predict_prob')
                 expert_fns.append(expert_fn)
 
                 model = CNN_rej(embedding_dim=100, vocab_size=100, n_filters=300, filter_sizes=[
@@ -358,9 +359,9 @@ def increase_error_rates(config):
                 valD = HatespeechDataset(split='val', error_rates=error_rate)
                 metrics, epoch_metrics = train(model, trainD, valD, expert_fns, config, seed=seed)
 
-                with open(f'metrics_{loss}/metrics_{loss}_{seed}_{error_rate[0]}_random_expert.pickle', "wb") as f:
+                with open(f'metrics_{loss}/metrics_{loss}_{seed}_{error_rate[0]}_expert_70.pickle', "wb") as f:
                     pickle.dump(metrics, f)
-                with open(f'logs_{loss}/logs_{loss}_{seed}_{error_rate[0]}_random_expert.json', "w") as f:
+                with open(f'logs_{loss}/logs_{loss}_{seed}_{error_rate[0]}_expert_70.json', "w") as f:
                     json.dump(epoch_metrics, f)
 
 if __name__ == "__main__":
