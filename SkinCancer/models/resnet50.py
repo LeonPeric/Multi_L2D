@@ -22,8 +22,6 @@ from torch.autograd import Variable
 # from models.experts import *
 # from losses.losses import *
 
-
-
 class ResNet50_defer(nn.Module):
 	def __init__(self, out_size):
 		super(ResNet50_defer, self).__init__()

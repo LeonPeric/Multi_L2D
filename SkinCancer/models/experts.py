@@ -7,7 +7,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 class synth_expert:
-    def __init__(self, flip_prob=0.30, p_in=0.75):
+    def __init__(self, flip_prob=0.30, p_in=0.70):
         self.n_classes = 2
         self.flip_prob = flip_prob
         self.p_in = p_in	
