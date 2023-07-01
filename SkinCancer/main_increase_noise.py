@@ -302,7 +302,7 @@ expert_fn = [getattr(expert, "predict_prob")]
 def increase_error(config):
     for seed in [42, 35, 936, 235, 464]:
         config["seed"] = seed
-        for noise_rate in [0.0, 0.05, 0.1, 0.5, 0.8]:
+        for noise_rate in [0.0, 0.02, 0.04, 0.06, 0.08]:
             config["noise_rate"] = noise_rate
             for loss in ["softmax", "ova"]:
                 config["loss"] = loss
